@@ -1,0 +1,25 @@
+.cursor{
+    cursor: pointer;
+    color: white;
+}
+.text-decorator-none{
+    text-decoration: none;
+}
+.navbar:hover {
+    color: #c6f0e1
+}
+.navbar{
+    padding: 0 50px;
+    font-size: large;
+    font-weight: 1000;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 3px;
+
+}
+.MuiAppBar-colorPrimary {
+    background-color: #00aec8 !important;
+}
+.teste{
+    justify-content: center;
+}
