@@ -1,6 +1,7 @@
 import React from 'react';
 import {Typography, Box, Grid, Button} from '@material-ui/core';
 import './Home.css';
+import TabConteiner from '../../components/conteiner/tabconteiner/TabConteiner';
 
 function Home() {
     return (
@@ -20,6 +21,7 @@ function Home() {
                     <img src="https://i.imgur.com/kJfMMAi.png" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} style={{ backgroundColor: "white" }}>
+                    <TabConteiner/>
                 </Grid>
             </Grid>
         </>

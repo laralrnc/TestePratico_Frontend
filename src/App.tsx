@@ -1,11 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer';
 import Home from './paginas/home/Home';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './paginas/login/Login';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+import ListaMovimentacao from './components/movimentacao/listamovimentacao/ListaMovimentacao';
+import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner';
 
 
 
@@ -14,26 +16,21 @@ function App() {
 
     <Router>
       <Navbar />
-      <Switch>
-        <div style={{ minHeight: '100vh' }}>
+      <Routes>
 
-          <Route exact path='/'>
-            <Login />
-          </Route>
+        <Route path="/" element={<Login />} />
 
-          <Route path='/login'>
-            <Login />
-          </Route>
+        <Route path="/home" element={<Home />} />
 
-          <Route path='/home'>
-            <Home />
-          </Route>
+        <Route path="/login" element={<Login />} />
 
-          <Route path='/cadastrousuario'>
-            <CadastroUsuario />
-          </Route>
-        </div>
-      </Switch>
+        <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+
+        <Route path="/movimentacao" element={<ListaMovimentacao />} />
+
+        <Route path="/conteiner" element={<ListaConteiner />} />
+
+      </Routes>
       <Footer />
     </Router>
 
