@@ -3,9 +3,9 @@ import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer';
 import Home from './paginas/home/Home';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Cliente from './components/cliente/Cliente';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './paginas/login/Login';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 
 
 
@@ -14,11 +14,26 @@ function App() {
 
     <Router>
       <Navbar />
-      <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-      </Routes>
+      <Switch>
+        <div style={{ minHeight: '100vh' }}>
+
+          <Route exact path='/'>
+            <Login />
+          </Route>
+
+          <Route path='/login'>
+            <Login />
+          </Route>
+
+          <Route path='/home'>
+            <Home />
+          </Route>
+
+          <Route path='/cadastrousuario'>
+            <CadastroUsuario />
+          </Route>
+        </div>
+      </Switch>
       <Footer />
     </Router>
 
