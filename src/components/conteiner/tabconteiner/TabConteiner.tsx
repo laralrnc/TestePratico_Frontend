@@ -22,12 +22,12 @@ function TabConteiner() {
                 </AppBar>
                 <TabPanel value="1" >
                     <Box display="flex" flexWrap="wrap" justifyContent="center">
-                        <ListaConteiner />
+                        <ListaConteiner/>
                     </Box>
                 </TabPanel>
                 <TabPanel value="2">
                     <Box display="flex" flexWrap="wrap" justifyContent="center">
-                        <ListaMovimentacao />
+                        <ListaMovimentacao/>
                     </Box>
                 </TabPanel>
             </TabContext>

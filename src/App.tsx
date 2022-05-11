@@ -6,12 +6,12 @@ import Home from './paginas/home/Home';
 import './App.css';
 import Login from './paginas/login/Login';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
-import ListaMovimentacao from './components/movimentacao/listamovimentacao/ListaMovimentacao';
-import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner';
 import ListaCliente from './components/cliente/listacliente/ListaCliente';
-import CadastroConteiner from './components/conteiner/cadastroconteiner/CadastroConteiner';
-import CadastroMovimentacao from './components/movimentacao/cadastromovimentacao/CadastroMovimentacao';
 import ListaCategoria from './components/conteiner/listaconteiner/listacategoria/ListaCategoria';
+import CadastroConteiner from './components/conteiner/cadastroconteiner/CadastroConteiner';
+import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner';
+import CadastroMovimentacao from './components/movimentacao/cadastromovimentacao/CadastroMovimentacao';
+import ListaMovimentacao from './components/movimentacao/listamovimentacao/ListaMovimentacao';
 
 
 
@@ -31,17 +31,18 @@ function App() {
 
         <Route path="/cadastrousuario" element={<CadastroUsuario />} />
 
-        <Route path="/movimentacao" element={<ListaMovimentacao />} />
-
-        <Route path="/conteiner" element={<ListaConteiner />} />
 
         <Route path="/clientes" element={<ListaCliente />} />
 
+        <Route path="/categorias" element={<ListaCategoria />} />
+
         <Route path="/cadastroconteiner" element={<CadastroConteiner />} />
+
+        <Route path="/conteiner" element={<ListaConteiner />} />
 
         <Route path="/cadastromovimentacao" element={<CadastroMovimentacao />} />
 
-        <Route path="/categorias" element={<ListaCategoria />} />
+        <Route path="/movimentacao" element={<ListaMovimentacao />} />
         
       </Routes>
       </div>

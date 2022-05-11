@@ -19,32 +19,32 @@ function Navbar() {
     return (
         <>
                 <AppBar position="static">
-                    <Toolbar>
-                        <Button color="inherit">Cadastrar cliente</Button>
-                        <Link to="/cadastromovimentacao">
-                        <Button color="inherit">Cadastrar movimentação</Button>
-                        </Link>
-                        <Link to="/cadastroconteiner">
-                        <Button color="inherit">Cadastrar contêiner</Button>
-                        </Link>
-                        <Link to="/movimentacao">
-                        <Button color="inherit">Exibir movimentações</Button>
-                        </Link>
-                        <Link to="/conteiner">
-                        <Button color="inherit">Exibir contêiners</Button>
-                        </Link>
-                        <Link to="/clientes">
-                        <Button color="inherit">Exibir clientes</Button>
-                        </Link>
-                        <Link to="/categorias">
-                        <Button color="inherit">Exibir categorias</Button>
-                        </Link>
-                        <Box onClick={goLogout}>
-                        <Button color="inherit">Logout</Button>
-                        </Box>
+        <Toolbar>
+            <Button color="inherit">Cadastrar cliente</Button>
+            <Link to="/cadastromovimentacao">
+            <Button color="inherit">Cadastrar movimentação</Button>
+            </Link>
+            <Link to="/cadastroconteiner">
+            <Button color="inherit">Cadastrar contêiner</Button>
+            </Link>
+            <Link to="/movimentacao">
+            <Button color="inherit">Exibir movimentações</Button>
+            </Link>
+            <Link to="/conteiner">
+            <Button color="inherit">Exibir contêiners</Button>
+            </Link>
+            <Link to="/clientes">
+            <Button color="inherit">Exibir clientes</Button>
+            </Link>
+            <Link to="/categorias">
+            <Button color="inherit">Exibir categorias</Button>
+            </Link>
+            <Box onClick={goLogout}>
+            <Button color="inherit">Logout</Button>
+            </Box>
 
-                    </Toolbar>
-                </AppBar>
+        </Toolbar>
+    </AppBar>
 
         </>
     );
