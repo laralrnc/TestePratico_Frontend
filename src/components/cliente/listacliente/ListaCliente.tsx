@@ -13,6 +13,7 @@ import useLocalStorage from 'react-use-localstorage';
 import { busca } from '../../../services/Service';
 import Cliente from '../../../models/Cliente';
 
+
 function ListaCliente() {
 
     const [clientes, setClientes] = useState<Cliente[]>([])
