@@ -1,10 +1,20 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import Button from '@material-ui/core/Button';
+import useLocalStorage from 'react-use-localstorage';
 
 function Navbar() {
+
+    const [token, setToken] = useLocalStorage('token');
+    let navigate = useNavigate();
+    
+    function goLogout(){
+        setToken('')
+        alert("Usuário deslogado")
+        navigate('/login')
+    }
 
     return (
         <>
@@ -26,7 +36,13 @@ function Navbar() {
                         <Link to="/clientes">
                         <Button color="inherit">Exibir clientes</Button>
                         </Link>
+                        <Link to="/categorias">
+                        <Button color="inherit">Exibir categorias</Button>
+                        </Link>
+                        <Box onClick={goLogout}>
                         <Button color="inherit">Logout</Button>
+                        </Box>
+
                     </Toolbar>
                 </AppBar>
 

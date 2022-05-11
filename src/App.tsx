@@ -11,6 +11,7 @@ import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner
 import ListaCliente from './components/cliente/listacliente/ListaCliente';
 import CadastroConteiner from './components/conteiner/cadastroconteiner/CadastroConteiner';
 import CadastroMovimentacao from './components/movimentacao/cadastromovimentacao/CadastroMovimentacao';
+import ListaCategoria from './components/conteiner/listaconteiner/listacategoria/ListaCategoria';
 
 
 
@@ -39,6 +40,8 @@ function App() {
         <Route path="/cadastroconteiner" element={<CadastroConteiner />} />
 
         <Route path="/cadastromovimentacao" element={<CadastroMovimentacao />} />
+
+        <Route path="/categorias" element={<ListaCategoria />} />
         
       </Routes>
       </div>
