@@ -9,6 +9,7 @@ import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import ListaMovimentacao from './components/movimentacao/listamovimentacao/ListaMovimentacao';
 import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner';
 import ListaCliente from './components/cliente/listacliente/ListaCliente';
+import CadastroConteiner from './components/conteiner/cadastroconteiner/CadastroConteiner';
 
 
 
@@ -17,6 +18,7 @@ function App() {
 
     <Router>
       <Navbar />
+      <div style={{ minHeight: '100vh' }}>
       <Routes>
 
         <Route path="/" element={<Login />} />
@@ -33,7 +35,10 @@ function App() {
 
         <Route path="/clientes" element={<ListaCliente />} />
 
+        <Route path="/cadastroconteiner" element={<CadastroConteiner />} />
+        
       </Routes>
+      </div>
       <Footer />
     </Router>
 

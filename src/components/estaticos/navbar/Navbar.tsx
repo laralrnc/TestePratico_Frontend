@@ -12,7 +12,9 @@ function Navbar() {
                     <Toolbar>
                         <Button color="inherit">Cadastrar cliente</Button>
                         <Button color="inherit">Cadastrar movimentação</Button>
-                        <Button color="inherit">Cadastrar Contêiner</Button>
+                        <Link to="/cadastroconteiner">
+                        <Button color="inherit">Cadastrar contêiner</Button>
+                        </Link>
                         <Link to="/movimentacao">
                         <Button color="inherit">Exibir movimentações</Button>
                         </Link>
