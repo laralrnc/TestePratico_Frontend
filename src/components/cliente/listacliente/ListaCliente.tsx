@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Box, Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import './ListaMovimentacao.css';
+import './ListaCliente.css';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,13 +9,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Deslocamento from '../../../models/Deslocamento';
 import useLocalStorage from 'react-use-localstorage';
 import { busca } from '../../../services/Service';
+import Cliente from '../../../models/Cliente';
 
-function ListaMovimentacao() {
+function ListaCliente() {
 
-    const [deslocamentos, setDeslocamentos] = useState<Deslocamento[]>([])
+    const [clientes, setClientes] = useState<Cliente[]>([])
     const [token, setToken] = useLocalStorage('token');
     let navigate = useNavigate();
 
@@ -26,8 +26,8 @@ function ListaMovimentacao() {
         }
     }, [token])
 
-    async function getDeslocamentos() {
-        await busca('/deslocamentos', setDeslocamentos, {
+    async function getClientes() {
+        await busca('/clientes', setClientes, {
             headers: {
                 'Authorization': token
             }
@@ -35,30 +35,26 @@ function ListaMovimentacao() {
     }
 
     useEffect(() => {
-        getDeslocamentos()
-    }, [deslocamentos.length])
+        getClientes()
+    }, [clientes.length])
 
     return (
         <>
 
-            <Box m={20} marginTop={20}className='H1'>
-                <h1 >Listagem de movimentações</h1>
+            <Box m={20} marginTop={20} className="BOX">
+                <h1>Listagem de clientes</h1>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center">Tipo de movimentação</TableCell>
-                                <TableCell align="center">Data de saída</TableCell>
-                                <TableCell align="center">Data de chegada</TableCell>
+                                <TableCell align="center">Clientes</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {
-                                deslocamentos.map(deslocamentos => (
+                                clientes.map(clientes => (
                                     <TableRow >
-                                        <TableCell align="center">{deslocamentos.movimentacao}</TableCell>
-                                        <TableCell align="center">{deslocamentos.dataInicio}</TableCell>
-                                        <TableCell align="center">{deslocamentos.dataFim}</TableCell>
+                                        <TableCell align="center">{clientes.cliente}</TableCell>
                                     </TableRow>
                                 ))}
                         </TableBody>
@@ -71,4 +67,4 @@ function ListaMovimentacao() {
 }
 
 
-export default ListaMovimentacao;
+export default ListaCliente;

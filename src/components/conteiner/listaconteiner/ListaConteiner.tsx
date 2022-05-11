@@ -42,17 +42,17 @@ function ListaConteiner() {
         <>
 
             <Box m={20} marginTop={20}>
+                <h1>Listagem de contêiners</h1>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>Listagem de contêiners</TableCell>
-                                <TableCell align="right">Código</TableCell>
-                                <TableCell align="right">Tipo</TableCell>
-                                <TableCell align="right">Status</TableCell>
-                                <TableCell align="right">Categoria</TableCell>
-                                <TableCell align="right">Cliente</TableCell>
-                                <TableCell align="right">Movimentação</TableCell>
+                                <TableCell align="center">Código</TableCell>
+                                <TableCell align="center">Tipo</TableCell>
+                                <TableCell align="center">Status</TableCell>
+                                <TableCell align="center">Categoria</TableCell>
+                                <TableCell align="center">Cliente</TableCell>
+                                <TableCell align="center">Movimentação</TableCell>
                             </TableRow>
                         </TableHead>
 
@@ -60,36 +60,17 @@ function ListaConteiner() {
                             {
                                 conteiner.map(conteiner => (
                                     <TableRow >
-                                        <TableCell component="th" scope="row">
-                                        </TableCell>
-                                        <TableCell align="right">{conteiner.codigoConteiner}</TableCell>
-                                        <TableCell align="right">{conteiner.tipo}</TableCell>
-                                        <TableCell align="right">{conteiner.status}</TableCell>
-                                        <TableCell align="right">{conteiner.categoria}</TableCell>
-                                        <TableCell align="right">{conteiner.cliente?.cliente}</TableCell>
-                                        <TableCell align="right">{conteiner.deslocamento?.movimentacao}</TableCell>
+                                        <TableCell align="center">{conteiner.codigoConteiner}</TableCell>
+                                        <TableCell align="center">{conteiner.tipo}</TableCell>
+                                        <TableCell align="center">{conteiner.status}</TableCell>
+                                        <TableCell align="center">{conteiner.categoria}</TableCell>
+                                        <TableCell align="center">{conteiner.cliente?.cliente}</TableCell>
+                                        <TableCell align="center">{conteiner.deslocamento?.movimentacao}</TableCell>
                                     </TableRow>
                                 ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Box display="flex" justifyContent="center" mb={1.5}>
-
-                    <Link to="" className="text-decorator-none" >
-                        <Box mx={1}>
-                            <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                                atualizar
-                            </Button>
-                        </Box>
-                    </Link>
-                    <Link to="" className="text-decorator-none">
-                        <Box mx={1}>
-                            <Button variant="contained" size='small' color="secondary">
-                                deletar
-                            </Button>
-                        </Box>
-                    </Link>
-                </Box>
             </Box >
 
         </>)

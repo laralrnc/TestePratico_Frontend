@@ -13,8 +13,12 @@ function Navbar() {
                         <Button color="inherit">Cadastrar cliente</Button>
                         <Button color="inherit">Cadastrar movimentação</Button>
                         <Button color="inherit">Cadastrar Contêiner</Button>
+                        <Link to="/movimentacao">
                         <Button color="inherit">Exibir movimentações</Button>
+                        </Link>
+                        <Link to="/conteiner">
                         <Button color="inherit">Exibir contêiners</Button>
+                        </Link>
                         <Link to="/clientes">
                         <Button color="inherit">Exibir clientes</Button>
                         </Link>

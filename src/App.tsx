@@ -8,6 +8,7 @@ import Login from './paginas/login/Login';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import ListaMovimentacao from './components/movimentacao/listamovimentacao/ListaMovimentacao';
 import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner';
+import ListaCliente from './components/cliente/listacliente/ListaCliente';
 
 
 
@@ -29,6 +30,8 @@ function App() {
         <Route path="/movimentacao" element={<ListaMovimentacao />} />
 
         <Route path="/conteiner" element={<ListaConteiner />} />
+
+        <Route path="/clientes" element={<ListaCliente />} />
 
       </Routes>
       <Footer />
