@@ -10,6 +10,7 @@ import ListaMovimentacao from './components/movimentacao/listamovimentacao/Lista
 import ListaConteiner from './components/conteiner/listaconteiner/ListaConteiner';
 import ListaCliente from './components/cliente/listacliente/ListaCliente';
 import CadastroConteiner from './components/conteiner/cadastroconteiner/CadastroConteiner';
+import CadastroMovimentacao from './components/movimentacao/cadastromovimentacao/CadastroMovimentacao';
 
 
 
@@ -36,6 +37,8 @@ function App() {
         <Route path="/clientes" element={<ListaCliente />} />
 
         <Route path="/cadastroconteiner" element={<CadastroConteiner />} />
+
+        <Route path="/cadastromovimentacao" element={<CadastroMovimentacao />} />
         
       </Routes>
       </div>

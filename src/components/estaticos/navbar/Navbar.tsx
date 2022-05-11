@@ -11,7 +11,9 @@ function Navbar() {
                 <AppBar position="static">
                     <Toolbar>
                         <Button color="inherit">Cadastrar cliente</Button>
+                        <Link to="/cadastromovimentacao">
                         <Button color="inherit">Cadastrar movimentação</Button>
+                        </Link>
                         <Link to="/cadastroconteiner">
                         <Button color="inherit">Cadastrar contêiner</Button>
                         </Link>

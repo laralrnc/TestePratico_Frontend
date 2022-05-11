@@ -50,6 +50,8 @@ function ListaMovimentacao() {
                                 <TableCell align="center">Tipo de movimentação</TableCell>
                                 <TableCell align="center">Data de saída</TableCell>
                                 <TableCell align="center">Data de chegada</TableCell>
+                                <TableCell align="center">Contêiner</TableCell>
+                                <TableCell align="center">Cliente</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -59,6 +61,8 @@ function ListaMovimentacao() {
                                         <TableCell align="center">{deslocamentos.movimentacao}</TableCell>
                                         <TableCell align="center">{deslocamentos.dataInicio}</TableCell>
                                         <TableCell align="center">{deslocamentos.dataFim}</TableCell>
+                                        <TableCell align="center">{deslocamentos.conteiner?.codigoConteiner}</TableCell>
+                                        <TableCell align="center">{deslocamentos.conteiner?.cliente?.cliente}</TableCell>
                                     </TableRow>
                                 ))}
                         </TableBody>

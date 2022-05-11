@@ -3,13 +3,13 @@ import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem,
 import useLocalStorage from 'react-use-localstorage';
 import { busca, buscaId, post, put } from '../../../services/Service';
 import { useNavigate, useParams } from 'react-router-dom';
-import Cliente from '../../../models/Cliente';
 import Conteiner from '../../../models/Conteiner';
+import Deslocamento from '../../../models/Deslocamento';
 
 function CadastroPost() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [clientes, setClientes] = useState<Cliente[]>([])
+    const [conteiners, setConteiners] = useState<Conteiner[]>([])
     const [token, setToken] = useLocalStorage('token');
 
     useEffect(() => {
@@ -20,11 +20,6 @@ function CadastroPost() {
         }
     }, [token])
 
-    const [cliente, setCliente] = useState<Cliente>(
-        {
-            id: 0,
-            cliente: ''
-        })
     const [conteiner, setConteiner] = useState<Conteiner>({
         id: 0,
         codigoConteiner: '',
@@ -34,43 +29,51 @@ function CadastroPost() {
         cliente: null,
     })
 
+    const [deslocamentos, setDeslocamentos] = useState<Deslocamento>({
+        id: 0,
+        movimentacao: '',
+        dataInicio: '',
+        dataFim:'',
+        conteiner: null
+    })
+
     useEffect(() => {
-        setConteiner({
-            ...conteiner,
-            cliente: cliente
+        setDeslocamentos({
+            ...deslocamentos,
+            conteiner: conteiner
 
         })
-    }, [cliente])
+    }, [conteiner])
 
     useEffect(() => {
-        getClientes()
+        getConteiner()
         if (id !== undefined) {
-            findByIdConteiner(id)
+            findByIdDeslocamento(id)
         }
     }, [id])
 
-    async function getClientes() {
-        await busca("/clientes", setClientes, {
+    async function getConteiner() {
+        await busca("/conteiner", setConteiners, {
             headers: {
                 'Authorization': token
             }
         })
     }
 
-    async function findByIdConteiner(id: string) {
-        await buscaId(`conteiner/${id}`, setConteiner, {
+    async function findByIdDeslocamento(id: string) {
+        await buscaId(`deslocamentos/${id}`, setDeslocamentos, {
             headers: {
                 'Authorization': token
             }
         })
     }
 
-    function updatedConteiner(e: ChangeEvent<HTMLInputElement>) {
+    function updatedDeslocamentos(e: ChangeEvent<HTMLInputElement>) {
 
-        setConteiner({
-            ...conteiner,
+        setDeslocamentos({
+            ...deslocamentos,
             [e.target.name]: e.target.value,
-            cliente: cliente
+            conteiner: conteiner
         })
 
     }
@@ -79,56 +82,64 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`/conteiner`, conteiner, setConteiner, {
+            put(`/deslocamentos`, deslocamentos, setDeslocamentos, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Contêiner atualizado com sucesso');
+            alert('Movimentação atualizada com sucesso');
         } else {
-            post(`/conteiner`, conteiner, setConteiner, {
+            post(`/deslocamentos`, deslocamentos, setDeslocamentos, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Contêiner cadastrado com sucesso');
+            alert('Movimentação cadastrada com sucesso');
         }
         back()
 
     }
 
     function back() {
-        navigate('/conteiner')
+        navigate('/movimentacao')
     }
 
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro contêiner</Typography>
-                <TextField value={conteiner.codigoConteiner} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedConteiner(e)} id="codigoConteiner" label="codigoConteiner" variant="outlined" name="codigoConteiner" margin="normal" fullWidth />
-                <TextField value={conteiner.status} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedConteiner(e)} id="status" label="status" variant="outlined" name="status" margin="normal" fullWidth />
-                <TextField value={conteiner.categoria} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedConteiner(e)} id="categoria" label="categoria" name="categoria" variant="outlined" margin="normal" fullWidth />
+                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro de movimentação</Typography>
+                <TextField value={deslocamentos.movimentacao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)} id="movimentacao" label="movimentacao" variant="outlined" name="movimentacao" margin="normal" fullWidth />
                 <TextField
-                    value={conteiner.tipo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedConteiner(e)} id="tipo" label="tipo" name="tipo" variant="outlined" margin="normal" fullWidth
-                    type="number"
+                value={deslocamentos.dataInicio} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)} 
+                id="dataInicio" label="dataInicio" variant="outlined" name="dataInicio" margin="normal" fullWidth
+                    type="datetime-local"
+                    defaultValue="2017-05-24T10:30"
                     InputLabelProps={{
                         shrink: true,
                     }}
                 />
-
+                <TextField
+                value={deslocamentos.dataFim} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)} 
+                id="dataFim" label="dataFim" variant="outlined" name="dataFim" margin="normal" fullWidth
+                    type="datetime-local"
+                    defaultValue="2017-05-24T10:30"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
                 <FormControl >
-                    <InputLabel id="demo-simple-select-helper-label">Clientes </InputLabel>
+                    <InputLabel id="demo-simple-select-helper-label">Contêiner </InputLabel>
                     <Select
                         labelId="demo-simple-select-helper-label"
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/clientes/${e.target.value}`, setCliente, {
+                        onChange={(e) => buscaId(`/conteiner/${e.target.value}`, setConteiner, {
                             headers: {
                                 'Authorization': token
                             }
                         })}>
                         {
-                            clientes.map(clientes => (
-                                <MenuItem value={clientes.id}>{clientes.cliente}</MenuItem>
+                            conteiners.map(conteiner => (
+                                <MenuItem value={conteiner.id}>{conteiner.codigoConteiner}</MenuItem>
                             ))
                         }
                     </Select>
