@@ -8,6 +8,5 @@ interface Conteiner{
     status:string;
     categoria: string;
     cliente?: Cliente|null
-    deslocamento?: Deslocamento|null
 }
 export default Conteiner;

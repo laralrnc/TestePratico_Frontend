@@ -15,14 +15,14 @@ import { busca } from '../../../services/Service';
 
 function ListaMovimentacao() {
 
-    const [deslocamentos, setDeslocamentos] = useState<Deslocamento[]>([])
     const [token, setToken] = useLocalStorage('token');
+    const [deslocamentos, setDeslocamentos] = useState<Deslocamento[]>([])
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (token == '') {
+        if (token == "") {
             alert('você precisa estar logado')
-            navigate('/login')
+            navigate("/login")
         }
     }, [token])
 
@@ -41,7 +41,7 @@ function ListaMovimentacao() {
     return (
         <>
 
-            <Box m={20} marginTop={20}className='H1'>
+            <Box m={20} marginTop={20} className='H1'>
                 <h1 >Listagem de movimentações</h1>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">

@@ -7,10 +7,11 @@ import Conteiner from '../../../models/Conteiner';
 import Deslocamento from '../../../models/Deslocamento';
 
 function CadastroPost() {
+
     let navigate = useNavigate();
-    const { id } = useParams<{ id: string }>();
     const [conteiners, setConteiners] = useState<Conteiner[]>([])
     const [token, setToken] = useLocalStorage('token');
+    const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
         if (token == "") {
@@ -26,14 +27,14 @@ function CadastroPost() {
         tipo: 0,
         status: '',
         categoria: '',
-        cliente: null,
+        cliente: null
     })
 
     const [deslocamentos, setDeslocamentos] = useState<Deslocamento>({
         id: 0,
         movimentacao: '',
         dataInicio: '',
-        dataFim:'',
+        dataFim: '',
         conteiner: null
     })
 
@@ -41,7 +42,6 @@ function CadastroPost() {
         setDeslocamentos({
             ...deslocamentos,
             conteiner: conteiner
-
         })
     }, [conteiner])
 
@@ -110,8 +110,8 @@ function CadastroPost() {
                 <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro de movimentação</Typography>
                 <TextField value={deslocamentos.movimentacao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)} id="movimentacao" label="movimentacao" variant="outlined" name="movimentacao" margin="normal" fullWidth />
                 <TextField
-                value={deslocamentos.dataInicio} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)} 
-                id="dataInicio" label="dataInicio" variant="outlined" name="dataInicio" margin="normal" fullWidth
+                    value={deslocamentos.dataInicio} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)}
+                    id="dataInicio" label="dataInicio" variant="outlined" name="dataInicio" margin="normal" fullWidth
                     type="datetime-local"
                     defaultValue="2017-05-24T10:30"
                     InputLabelProps={{
@@ -119,8 +119,8 @@ function CadastroPost() {
                     }}
                 />
                 <TextField
-                value={deslocamentos.dataFim} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)} 
-                id="dataFim" label="dataFim" variant="outlined" name="dataFim" margin="normal" fullWidth
+                    value={deslocamentos.dataFim} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedDeslocamentos(e)}
+                    id="dataFim" label="dataFim" variant="outlined" name="dataFim" margin="normal" fullWidth
                     type="datetime-local"
                     defaultValue="2017-05-24T10:30"
                     InputLabelProps={{
@@ -136,11 +136,13 @@ function CadastroPost() {
                             headers: {
                                 'Authorization': token
                             }
-                        })}>
+                        })}
+                    >
                         {
                             conteiners.map(conteiner => (
-                                <MenuItem value={conteiner.id}>{conteiner.codigoConteiner}</MenuItem>
+                                <MenuItem value={conteiner.id} >{conteiner.codigoConteiner}</MenuItem>
                             ))
+
                         }
                     </Select>
                     <FormHelperText>Escolha o cliente deste contêiner</FormHelperText>

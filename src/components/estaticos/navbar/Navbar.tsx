@@ -9,8 +9,8 @@ function Navbar() {
 
     const [token, setToken] = useLocalStorage('token');
     let navigate = useNavigate();
-    
-    function goLogout(){
+
+    function goLogout() {
         setToken('')
         alert("Usuário deslogado")
         navigate('/login')
@@ -18,33 +18,37 @@ function Navbar() {
 
     return (
         <>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Button color="inherit">Cadastrar cliente</Button>
-                        <Link to="/cadastromovimentacao">
-                        <Button color="inherit">Cadastrar movimentação</Button>
-                        </Link>
-                        <Link to="/cadastroconteiner">
-                        <Button color="inherit">Cadastrar contêiner</Button>
-                        </Link>
-                        <Link to="/movimentacao">
-                        <Button color="inherit">Exibir movimentações</Button>
-                        </Link>
-                        <Link to="/conteiner">
-                        <Button color="inherit">Exibir contêiners</Button>
-                        </Link>
-                        <Link to="/clientes">
-                        <Button color="inherit">Exibir clientes</Button>
-                        </Link>
-                        <Link to="/categorias">
-                        <Button color="inherit">Exibir categorias</Button>
-                        </Link>
-                        <Box onClick={goLogout}>
-                        <Button color="inherit">Logout</Button>
-                        </Box>
+            <AppBar position="static">
+                <Toolbar>
 
-                    </Toolbar>
-                </AppBar>
+                    <Link to="/home">
+                        <Button color="inherit">Home</Button>
+                    </Link>
+                    <Link to="/cadastromovimentacao">
+                        <Button color="inherit">Cadastrar movimentação</Button>
+                    </Link>
+                    <Link to="/cadastroconteiner">
+                        <Button color="inherit">Cadastrar contêiner</Button>
+                    </Link>
+                    <Link to="/movimentacao">
+                        <Button color="inherit">Exibir movimentações</Button>
+                    </Link>
+                    <Link to="/conteiner">
+                        <Button color="inherit">Exibir contêiners</Button>
+                    </Link>
+                    <Link to="/clientes">
+                        <Button color="inherit">Exibir clientes</Button>
+                    </Link>
+                    <Link to="/categorias">
+                        <Button color="inherit">Exibir categorias</Button>
+                    </Link>
+
+                    <Box onClick={goLogout}>
+                        <Button color="inherit">Logout</Button>
+                    </Box>
+
+                </Toolbar>
+            </AppBar>
 
         </>
     );

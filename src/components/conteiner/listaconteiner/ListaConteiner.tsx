@@ -13,9 +13,11 @@ import Conteiner from '../../../models/Conteiner';
 import useLocalStorage from 'react-use-localstorage';
 import { busca } from '../../../services/Service';
 
+
+
 function ListaConteiner() {
 
-    const [conteiner, setConteiner] = useState<Conteiner[]>([])
+    const [conteiner,setConteiner] = useState<Conteiner[]>([])
     const [token, setToken] = useLocalStorage('token');
     let navigate = useNavigate();
 
@@ -52,7 +54,6 @@ function ListaConteiner() {
                                 <TableCell align="center">Status</TableCell>
                                 <TableCell align="center">Categoria</TableCell>
                                 <TableCell align="center">Cliente</TableCell>
-                                <TableCell align="center">Movimentação</TableCell>
                             </TableRow>
                         </TableHead>
 
@@ -65,7 +66,6 @@ function ListaConteiner() {
                                         <TableCell align="center">{conteiner.status}</TableCell>
                                         <TableCell align="center">{conteiner.categoria}</TableCell>
                                         <TableCell align="center">{conteiner.cliente?.cliente}</TableCell>
-                                        <TableCell align="center">{conteiner.deslocamento?.movimentacao}</TableCell>
                                     </TableRow>
                                 ))}
                         </TableBody>

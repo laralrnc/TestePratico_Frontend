@@ -1,30 +1,25 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
-import useLocalStorage from 'react-use-localstorage';
-import { busca, buscaId, post, put } from '../../../services/Service';
-import { useNavigate, useParams } from 'react-router-dom';
-import Cliente from '../../../models/Cliente';
-import Conteiner from '../../../models/Conteiner';
+import { Button, Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from "@material-ui/core";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import useLocalStorage from "react-use-localstorage";
+import Cliente from "../../../models/Cliente";
+import Conteiner from "../../../models/Conteiner";
+import { busca, buscaId, post, put } from "../../../services/Service";
 
 function CadastroPost() {
+
     let navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token');
     const { id } = useParams<{ id: string }>();
     const [clientes, setClientes] = useState<Cliente[]>([])
-    const [token, setToken] = useLocalStorage('token');
 
     useEffect(() => {
         if (token == "") {
             alert("Você precisa estar logado")
             navigate("/login")
-
         }
     }, [token])
 
-    const [cliente, setCliente] = useState<Cliente>(
-        {
-            id: 0,
-            cliente: ''
-        })
     const [conteiner, setConteiner] = useState<Conteiner>({
         id: 0,
         codigoConteiner: '',
@@ -34,11 +29,16 @@ function CadastroPost() {
         cliente: null,
     })
 
+    const [cliente, setCliente] = useState<Cliente>({
+        id: 0,
+        cliente: ""
+    })
+
+
     useEffect(() => {
         setConteiner({
             ...conteiner,
             cliente: cliente
-
         })
     }, [cliente])
 
@@ -96,7 +96,6 @@ function CadastroPost() {
         back()
 
     }
-
     function back() {
         navigate('/conteiner')
     }
